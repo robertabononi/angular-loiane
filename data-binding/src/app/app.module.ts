@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DataBindingComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
