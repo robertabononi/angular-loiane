@@ -19,6 +19,10 @@ export class DataBindingComponent implements OnInit {
     return true
   }
 
+  botaoClicado(){
+    alert('Botão clicado!');
+  }
+
   constructor() { }
 
   ngOnInit(): void {
