@@ -29,16 +29,20 @@
       <br>
       <br>
 
-      <alert type="success">
+      <alert type="success"
+       [style.display]="classe.value == 'alert-success' ? 'block' : 'none'">
         <strong>Well done!</strong> You successfully read this important alert message.
       </alert>
-      <alert type="info">
+      <alert type="info"
+        [style.display]="classe.value == 'alert-info' ? 'block' : 'none'">
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
       </alert>
-      <alert type="warning">
+      <alert type="warning"
+        [style.display]="classe.value == 'alert-warning' ? 'block' : 'none'">
         <strong>Warning!</strong> Better check yourself, you're not looking too good.
       </alert>
-      <alert type="danger">
+      <alert type="danger"
+      [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'">>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </alert>
 
