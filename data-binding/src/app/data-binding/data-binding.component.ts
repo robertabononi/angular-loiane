@@ -23,6 +23,10 @@ export class DataBindingComponent implements OnInit {
     alert('Botão clicado!');
   }
 
+  onKeyUp(evento: KeyboardEvent){
+    console.log((<HTMLInputElement>evento.target).value);
+  }
+
   constructor() { }
 
   ngOnInit(): void {
