@@ -26,7 +26,7 @@ export class DataBindingComponent implements OnInit {
   }
 
   botaoClicado(){
-    alert('Botão clicado!');
+    alert('Botão clicado!')
   }
 
   onKeyUp(evento: KeyboardEvent){
@@ -34,7 +34,7 @@ export class DataBindingComponent implements OnInit {
   }
 
   salvarValor(valor: any){
-    this.valorSalvo = valor;
+    this.valorSalvo = valor
   }
 
   onMouseOverOut(){

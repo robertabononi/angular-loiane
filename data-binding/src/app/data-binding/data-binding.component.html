@@ -8,11 +8,15 @@
     <p>Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}.</p>
   </article>
 
+  <hr>
+
   <article>
-    <h3>Propery Binding</h3>
+    <h3>Property Binding</h3>
     <img src="{{ urlImagem }}">  <!--chamando imagem por interpolação -->
     <img [src]="urlImagem"> <!--chamando imagem por property binding-->
   </article>
+
+  <hr>
 
   <!--Style Binding-->
   <article>
@@ -52,6 +56,8 @@
 
 </section>
 
+<hr>
+
 <section class="event-biding">
 
   <article>
@@ -76,8 +82,6 @@
       <p>Valor atual: {{ valorAtual }}</p>
       <p>Valor salvo: {{ valorSalvo }}</p>
 
-      <br>
-
       <span
         (mouseover)="onMouseOverOut()"
         (mouseout)="onMouseOverOut()"
@@ -91,13 +95,17 @@
 
 </section>
 
+<hr>
+
 <app-meu-form></app-meu-form>
+
+<hr>
 
 <section class="input-output-properties">
   <article>
     <h3>Input/Output Properties</h3>
 
     <app-curso></app-curso>
-    
+
   </article>
 </section>
