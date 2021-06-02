@@ -5,7 +5,7 @@ import { Component, OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentCh
   templateUrl: './ciclo.component.html',
   styleUrls: ['./ciclo.component.css']
 })
-export class CicloComponent implements OnInit {
+export class CicloComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
   constructor() {
     console.log('constructor')
