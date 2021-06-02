@@ -1,1 +1,32 @@
-<p>meu-form works!</p>
+<section class=two-way-binding>
+  <article>
+    <h3>Two-way data binding</h3>
+    <div>
+
+      <input type="text"
+        [value]="nome"
+        (input)="nome= $any($event.target).value"
+      >
+
+      <input type="text"
+        [ngModel]="nome"
+        (ngModelChange)="nome= $event"
+      >
+
+      <input type="text" [(ngModel)]="nome">
+
+      <p>Você digitou: {{ nome }}</p>
+
+    </div>
+
+    <div>
+
+      <p>Meu nome é {{ pessoa.nome }}, tenho {{ pessoa.idade }} anos e moro na rua {{ pessoa.endereco.rua }}, número {{ pessoa.endereco.numero }}</p>
+
+      <input type="text" [(ngModel)]="pessoa.nome">
+      <input type="text" [(ngModel)]="pessoa.idade">
+      <input type="text" [(ngModel)]="pessoa.endereco.rua">
+
+    </div>
+  </article>
+</section>
