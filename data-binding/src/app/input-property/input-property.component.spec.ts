@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputPtopertyComponent } from './input-ptoperty.component';
+import { InputPtopertyComponent } from './input-property.component';
 
 describe('InputPtopertyComponent', () => {
   let component: InputPtopertyComponent;
