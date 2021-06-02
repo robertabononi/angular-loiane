@@ -110,6 +110,12 @@
 
       <p>Você digitou: {{ nome }}</p>
 
+    </div>
+
+    <div>
+
+      <p>Meu nome é {{ pessoa.nome }}, tenho {{ pessoa.idade }} anos e moro na rua {{ pessoa.endereco.rua }}, número {{ pessoa.endereco.numero }}</p>
+
       <input type="text" [(ngModel)]="pessoa.nome">
       <input type="text" [(ngModel)]="pessoa.idade">
       <input type="text" [(ngModel)]="pessoa.endereco.rua">
