@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DiretivaNgifComponent } from './diretiva-ngif.component';
+import { DiretivaNgIfComponent } from './diretiva-ng-if.component';
 
-describe('DiretivaNgifComponent', () => {
-  let component: DiretivaNgifComponent;
-  let fixture: ComponentFixture<DiretivaNgifComponent>;
+describe('DiretivaNgIfComponent', () => {
+  let component: DiretivaNgIfComponent;
+  let fixture: ComponentFixture<DiretivaNgIfComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiretivaNgifComponent ]
+      declarations: [ DiretivaNgIfComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DiretivaNgifComponent);
+    fixture = TestBed.createComponent(DiretivaNgIfComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
