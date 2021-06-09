@@ -1,1 +1,31 @@
-<p>diretiva-ng-style works!</p>
+<h5>Diretiva ngStyle</h5>
+
+<!--Sem usar ngStyle-->
+<button
+  [style.backgroundColor]="ativo ? 'blue' : 'gray'"
+  [style.color]="ativo ? 'white' : 'black'"
+  [style.fontWeight]="ativo ? 'bold' : 'normal'"
+  [style.fontSize]="tamanhoFonte + 'px'"
+  (click)="mudarAtivo()"
+  >
+  Mudar atributo 'ativo'
+</button>
+
+<br>
+
+<input type="text" [(ngModel)]="tamanhoFonte">
+
+<br>
+
+<!--Usando ngStyle-->
+<button
+  [ngStyle]="{
+    'backgroundColor': (ativo ? 'blue' : 'gray'),
+    'color': (ativo ? 'white' : 'black'),
+    'fontWeight': (ativo ? 'bold' : 'normal'),
+    'fontSize': (tamanhoFonte + 'px')
+  }"
+  (click)="mudarAtivo()"
+  >
+  Mudar atributo 'ativo'
+</button>
