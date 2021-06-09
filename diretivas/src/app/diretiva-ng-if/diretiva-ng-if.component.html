@@ -21,3 +21,17 @@
 <br>
 
 <button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>
+
+<hr>
+
+<h5>Hidden como alternativa</h5>
+
+<!--Quando a propriedade for falsa, o conteúdo será mostrado. E quando a propriedade for verdadeira, os itens ficarão escondidos.-->
+
+<div [hidden]="!mostrarCursos">
+  Lista de cursos
+</div>
+
+<div [hidden]="mostrarCursos" >
+  Não existem cursos para serem listados.
+</div>
