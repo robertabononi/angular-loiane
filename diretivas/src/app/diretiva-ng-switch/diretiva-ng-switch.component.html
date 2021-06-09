@@ -21,3 +21,9 @@
     </div>
   </div>
 </nav>
+
+<div class=container [ngSwitch]="aba">
+  <p *ngSwitchCase="'features'">Modo Feature ativado!</p>
+  <p *ngSwitchCase="'pricing'">Modo Pricing ativado!</p>
+  <p *ngSwitchDefault>Home: *ngSwitch</p>
+</div>
