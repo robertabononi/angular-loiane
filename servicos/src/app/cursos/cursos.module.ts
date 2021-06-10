@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from '../app-routing.module';
-import { CursosService } from './cursos.service';
+import { CursosService } from '../cursos/cursos.service';
 import { CursosComponent } from './cursos.component';
 
 @NgModule({
