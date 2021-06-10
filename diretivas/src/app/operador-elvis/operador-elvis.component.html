@@ -8,5 +8,5 @@
 <!--Lógica elaborada para dizer que se o resposável for diferente de nulo, aí sim podemos utilizar o nome. Caso contrário, colocar um vazio ('') -->
 <p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : '' }}</p>
 
-<!--Lógica simplificada utilizando o perador Elvis-->
+<!--Lógica simplificada utilizando o operador Elvis-->
 <p>Responsável: {{ tarefa.responsavel?.usuario?.nome }}</p>
