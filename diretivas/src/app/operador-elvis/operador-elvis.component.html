@@ -3,7 +3,10 @@
 <p>Descrição: {{ tarefa.descricao }}</p>
 
 <!-- Dá erro pois não é possível ler a propriedade de um objeto que é nulo:-->
-<p>Responsável: {{ tarefa.responsavel.nome }}</p>
+<!--p>Responsável: {{ tarefa.responsavel.nome }}</p-->
 
 <!--Lógica elaborada para dizer que se o resposável for diferente de nulo, aí sim podemos utilizar o nome. Caso contrário, colocar um vazio ('') -->
 <p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : '' }}</p>
+
+<!--Lógica simplificada utilizando o perador Elvis-->
+<p>Responsável: {{ tarefa.responsavel?.usuario?.nome }}</p>
