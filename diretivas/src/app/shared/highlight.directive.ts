@@ -16,7 +16,7 @@ export class HighlightDirective {
   @HostBinding('style.backgroundColor') backgroundColor?: string;
 
   @Input() defaultColor: string = "white"
-  @Input() highlightColor: string = "yellow"
+  @Input('appHighlight') highlightColor: string = "yellow"
 
   constructor() { }
 
