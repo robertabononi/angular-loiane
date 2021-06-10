@@ -14,7 +14,7 @@ import { DiretivaNgContentComponent } from './diretiva-ng-content/diretiva-ng-co
 import { FundoAmareloDirective } from './shared/fundo-amarelo.directive';
 import { DiretivasCustomizadasComponent } from './diretivas-customizadas/diretivas-customizadas.component';
 import { HighlightMouseDirective } from './shared/highlight-mouse.directive';
-import { HighlightDirective } from './share/highlight.directive';
+import { HighlightDirective } from './shared/highlight.directive';
 
 @NgModule({
   declarations: [
