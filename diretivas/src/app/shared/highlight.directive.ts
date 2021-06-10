@@ -20,4 +20,7 @@ export class HighlightDirective {
 
   constructor() { }
 
+  ngOnInit() {
+    this.backgroundColor = this.defaultColor
+  }
 }
