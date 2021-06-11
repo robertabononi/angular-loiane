@@ -9,9 +9,14 @@ import { CursosService } from '../cursos/cursos.service';
 })
 export class ReceberCursoCriadoComponent implements OnInit {
 
+  curso!: string;
+
   constructor(private cursosService: CursosService) { }
 
   ngOnInit(): void {
+    this.cursosService.emitirCursoCriado.subscribe(
+      cursoCriado => this.curso = cursoCriado
+    )
   }
 
 }
