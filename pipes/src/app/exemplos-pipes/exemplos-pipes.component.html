@@ -1,12 +1,12 @@
 <h5>Exemplos de Pipes</h5>
 
-<p>Título: {{ livro.titulo }}</p>
-<p>Estrelas: {{ livro.rating }}</p>
-<p>Páginas: {{ livro.numeroPaginas }}</p>
-<p>Preço: {{ livro.preco }}</p>
-<p>Data lançamento: {{ livro.dataLancamento }}</p>
+<p>Título: {{ livro.titulo | uppercase }}</p>
+<p>Estrelas: {{ livro.rating | number: '1.1-1' }}</p>
+<p>Páginas: {{ livro.numeroPaginas | number }}</p>
+<p>Preço: {{ livro.preco | currency:'BRL' }}</p>
+<p>Data lançamento: {{ livro.dataLancamento | date: 'dd/MM/yyyy' }}</p>
 <p>Url: {{ livro.url }}</p>
 
 <br>
 
-<p>Livro: {{ livro }}</p>
+<p>Livro: {{ livro | json }}</p>
