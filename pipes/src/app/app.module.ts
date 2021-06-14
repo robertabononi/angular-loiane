@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExemplosPipesComponent } from './exemplos-pipes/exemplos-pipes.component';
 import { CamelCasePipe } from './camel-case.pipe';
+import { SettingsService } from './settings.service';
 
 import '@angular/common/locales/global/pt';
 
@@ -18,7 +19,15 @@ import '@angular/common/locales/global/pt';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ { provide: LOCALE_ID, useValue: 'pt' } ],
+  providers: [
+    //{ provide: LOCALE_ID, useValue: 'pt' }
+    SettingsService,
+    {
+      provide: LOCALE_ID,
+      deps: [SettingsService],
+      useFactory: (settingsService: any) => settingsService.getLocale()
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
