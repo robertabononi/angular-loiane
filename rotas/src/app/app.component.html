@@ -17,6 +17,6 @@
 
 <div>
   <p>Entre com o id do curso:</p>
-  <input #idCurso> <!--(input)=0 foi utilizado pois sem ele, a id só era adicionado no final da URL depois de dois clicks na aba do curso-->
+  <input #idCurso (input)=0> <!--(input)=0 foi utilizado pois sem ele, a id só era adicionado no final da URL depois de dois clicks na aba do curso-->
   <router-outlet></router-outlet>
 </div>

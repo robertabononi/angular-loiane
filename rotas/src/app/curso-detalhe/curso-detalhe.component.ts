@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-curso-detalhe',
@@ -9,7 +10,10 @@ export class CursoDetalheComponent implements OnInit {
 
   cursoId!: string;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.cursoId = this.route.snapshot.params['id'];
+    //console.log(this.route);
+   }
 
   ngOnInit(): void {
   }
