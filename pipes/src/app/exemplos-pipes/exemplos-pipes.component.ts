@@ -35,6 +35,10 @@ export class ExemplosPipesComponent implements OnInit {
     );
   }
 
+  valorAsync = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Valor assíncrono'), 2000)
+  });
+
   constructor() { }
 
   ngOnInit(): void {
