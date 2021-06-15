@@ -1,4 +1,4 @@
-<h5>Exemplos de Pipes</h5>
+<h4>Exemplos de Pipes</h4>
 
 <p>Título: {{ livro.titulo | uppercase | camelCase }}</p>
 <p>Estrelas: {{ livro.rating | number: '1.1-1' }}</p>
@@ -20,8 +20,18 @@
 <input type="text" #novoValor>
 <button (click)="onAddCurso(novoValor.value)">Add Curso</button>
 
+<h4>Pipe Puro</h4>
+
 <ul>
   <li *ngFor="let curso of cursos | filtroArray:filtro">
+    {{ curso }}
+  </li>
+</ul>
+
+<h4>Pipe Impuro</h4>
+
+<ul>
+  <li *ngFor="let curso of cursos | filtroArrayImpuro:filtro">
     {{ curso }}
   </li>
 </ul>

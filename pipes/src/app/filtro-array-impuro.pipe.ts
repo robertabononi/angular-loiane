@@ -5,10 +5,4 @@ import { FiltroArrayPipe } from './filtro-array.pipe';
   name: 'filtroArrayImpuro',
   pure: false
 })
-export class FiltroArrayImpuroPipe extends FiltroArrayPipe {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
-
-}
+export class FiltroArrayImpuroPipe extends FiltroArrayPipe {}
