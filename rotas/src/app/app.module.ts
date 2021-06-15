@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { LoginComponent } from './login/login.component';
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
+import { CursosService } from './cursos/cursos.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
     TooltipModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CursosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
