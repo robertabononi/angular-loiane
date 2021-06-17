@@ -1,5 +1,9 @@
 <h5>Lista de cursos</h5>
 
+<p>
+  Página: {{ pagina }}
+</p>
+
 <div class="list-group">
   <a class="list-group-item list-group-item-action"
     *ngFor="let curso of cursos"
@@ -7,3 +11,5 @@
     {{ curso.nome }}
   </a>
 </div>
+
+<button (click)="proximaPagina()">Próxima página</button>
