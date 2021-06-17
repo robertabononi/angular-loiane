@@ -7,6 +7,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CursosModule } from './cursos/cursos.module';
+import { AlunosModule } from './alunos/alunos.module';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +18,9 @@ import { CursosModule } from './cursos/cursos.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     TooltipModule.forRoot(),
     CursosModule,
+    AlunosModule,
     AppRoutingModule
   ],
   providers: [],
