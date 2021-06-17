@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CursosService } from './../cursos/cursos.service';
+import { CursosService } from '../cursos.service';
 import { Router } from '@angular/router';
 
 @Component({
