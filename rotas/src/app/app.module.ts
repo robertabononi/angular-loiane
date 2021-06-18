@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AlunosModule } from './alunos/alunos.module';
 
 
 @NgModule({
@@ -18,7 +17,6 @@ import { AlunosModule } from './alunos/alunos.module';
   imports: [
     BrowserModule,
     TooltipModule.forRoot(),
-    AlunosModule,
     AppRoutingModule
   ],
   providers: [],
