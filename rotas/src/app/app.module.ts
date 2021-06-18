@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CursosModule } from './cursos/cursos.module';
 import { AlunosModule } from './alunos/alunos.module';
 
 
@@ -19,7 +18,6 @@ import { AlunosModule } from './alunos/alunos.module';
   imports: [
     BrowserModule,
     TooltipModule.forRoot(),
-    CursosModule,
     AlunosModule,
     AppRoutingModule
   ],
