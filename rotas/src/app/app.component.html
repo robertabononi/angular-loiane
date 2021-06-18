@@ -8,7 +8,7 @@
       <div class="navbar-nav">
         <a routerLinkActive="active" routerLink="/cursos" class="nav-link" [queryParams]="{pagina:1}">Cursos</a>
         <a routerLinkActive="active" routerLink="/login" class="nav-link">Login</a>
-        <a routerLinkActive="active" [routerLink]="['curso', idCurso.value]" class="nav-link">Curso com Id</a>
+        <!--<a routerLinkActive="active" [routerLink]="['curso', idCurso.value]" class="nav-link">Curso com Id</a>-->
         <a routerLinkActive="active" routerLink="/alunos" class="nav-link">Alunos</a>
       </div>
     </div>
@@ -18,10 +18,8 @@
 <br>
 
 <div class="container">
-  <p>Entre com o id do curso:</p>
+  <!--<p>Entre com o id do curso:</p>
   <input #idCurso (input)=0> <!--(input)=0 foi utilizado pois sem ele, a id só era adicionado no final da URL depois de dois clicks na aba do curso-->
-
-  <br><br>
 
   <router-outlet></router-outlet>
 </div>
