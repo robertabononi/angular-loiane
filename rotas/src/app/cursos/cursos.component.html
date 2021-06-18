@@ -1,20 +1,26 @@
-<h5>Lista de cursos</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h5>Lista de cursos</h5>
 
-<p>
-  Página: {{ pagina }}
-</p>
+      <p>
+        Página: {{ pagina }}
+      </p>
 
-<div class="list-group">
-  <a class="list-group-item list-group-item-action"
-    *ngFor="let curso of cursos"
-    [routerLink]="['/cursos', curso.idCurso]">
-    {{ curso.nome }}
-  </a>
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action"
+          *ngFor="let curso of cursos"
+          [routerLink]="['/cursos', curso.idCurso]">
+          {{ curso.nome }}
+        </a>
+      </div>
+
+      <br>
+
+      <a class="btn btn-primary"
+        (click)="proximaPagina()">
+        Próxima página
+      </a>
+    </div>
+  </div>
 </div>
-
-<br>
-
-<a class="btn btn-primary"
-  (click)="proximaPagina()">
-  Próxima página
-</a>
