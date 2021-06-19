@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuard } from './guard/auth.guard';
+import { CursosGuard } from './guard/cursos.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,11 @@ import { AuthGuard } from './guard/auth.guard';
     TooltipModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    CursosGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
