@@ -8,8 +8,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
-import { AuthGuard } from './guard/auth.guard';
-import { CursosGuard } from './guard/cursos.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { CursosGuard } from './guards/cursos.guard';
 
 @NgModule({
   declarations: [
