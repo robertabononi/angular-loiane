@@ -30,9 +30,11 @@ export class AlunoDetalheComponent implements OnInit {
       }
     ); */
 
+    console.log('ngOnInit: AlunoDetalheComponent')
+
     this.inscricao = this.route.data.subscribe(
       (info) => {
-        console.log(info);
+        console.log('Recebendo o objeto Aluno do resolver');
         this.aluno = info.aluno;
       }
     );

@@ -14,6 +14,8 @@ export class AlunosGuard implements CanActivateChild {
     //console.log(childRoute);
     //console.log(state);
 
+    console.log('AlunosGuard: Guarda de rota filha');
+
     if(state.url.includes('editar')){
       //alert('Usuário sem acesso.')
       //return of(false); //retornando com um Observable
