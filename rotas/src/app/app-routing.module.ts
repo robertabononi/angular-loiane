@@ -26,14 +26,19 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard]
   },
   {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
-    component: PaginaNaoEncontradaComponent,
-    canActivate: [AuthGuard]
+    component: PaginaNaoEncontradaComponent
+    //canActivate: [AuthGuard]
   }
 ];
 
