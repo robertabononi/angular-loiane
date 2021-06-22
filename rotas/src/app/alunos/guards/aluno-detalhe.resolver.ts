@@ -23,7 +23,9 @@ export class AlunoDetalheResolver implements Resolve<Aluno> {
     state: RouterStateSnapshot
   ):Observable<any> | Promise<any> | any  {
 
-    return this.alunosService.getAluno(route.params['id']);
+    let id = route.params['id'];
+
+    return this.alunosService.getAluno(id);
 
   }
 }
