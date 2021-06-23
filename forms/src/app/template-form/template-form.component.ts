@@ -15,7 +15,8 @@ export class TemplateFormComponent implements OnInit {
   onSubmit(form: any){
     console.log(form.value)
     console.log(this.usuario)
-    //acima, duas formar diferentes de retonar a mesma coisa!
+    //acima, duas formar diferentes de retonar a mesma coisa usando o two-way data binding!
+    //caso use apenas property binding, o form será atualizado, mas o objeto (usuario) não.
   }
 
   constructor() { }
