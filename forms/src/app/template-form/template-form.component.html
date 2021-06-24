@@ -3,13 +3,13 @@
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" [(ngModel)]="usuario.nome" required #nome>
-    <div> {{ nome.className }} </div>
+    <!--<div> {{ nome.className }} </div>-->
   </div>
 
   <div class="mb-3">
     <label for="email" class="form-label">E-mail</label>
     <input type="email" class="form-control" name="email" id="email" placeholder="nome@email.com" [ngModel]="usuario.email" required email #email>
-    <div> {{ email.className }} </div>
+    <!--<div> {{ email.className }} </div>-->
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
