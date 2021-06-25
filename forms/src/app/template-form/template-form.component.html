@@ -2,8 +2,11 @@
 
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
-    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" [(ngModel)]="usuario.nome" required #nome>
+    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" [(ngModel)]="usuario.nome" required #nome="ngModel">
     <!--<div> {{ nome.className }} </div>-->
+    <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert">
+      Nome é obrigatório.
+    </div>
   </div>
 
   <div class="mb-3">
