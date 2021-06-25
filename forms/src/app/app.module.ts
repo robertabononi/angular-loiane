@@ -7,13 +7,11 @@ import { AppComponent } from './app.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormModule } from './template-form/template-form.module';
-import { FormDebugComponent } from './form-debug/form-debug.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataFormComponent,
-    FormDebugComponent
+    DataFormComponent
   ],
   imports: [
     BrowserModule,
