@@ -14,7 +14,7 @@ export class TemplateFormComponent implements OnInit {
 
   onSubmit(form: any){
     console.log(form) //acesso aos controles
-    
+
     //console.log(this.usuario)
     //acima, duas formar diferentes de retonar a mesma coisa usando o two-way data binding!
     //caso use apenas property binding, o form será atualizado, mas o objeto (usuario) não.
@@ -23,6 +23,10 @@ export class TemplateFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  invalidTouchedField(campo: any) {
+    return !campo.valid && campo.touched
   }
 
 }
