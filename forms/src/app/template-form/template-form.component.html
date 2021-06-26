@@ -1,6 +1,6 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="row g-3">
 
-  <div class="mb-3">
+  <div class="col-12">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" [class.is-invalid]="!nome.valid && nome.touched" name="nome" id="nome" placeholder="Nome" [(ngModel)]="usuario.nome" required #nome="ngModel">
     <!--<div> {{ nome.className }} </div>-->
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="mb-3">
+  <div class="col-12">
     <label for="email" class="form-label">E-mail</label>
     <input type="email" class="form-control" [class.is-invalid]="!email.valid && email.touched" name="email" id="email" placeholder="nome@email.com" [ngModel]="usuario.email" required email #email="ngModel">
     <!--<div> {{ email.className }} </div>-->
@@ -18,9 +18,64 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
-    Submit
-  </button>
+  <div class="col-md-3">
+    <label for="cep" class="form-label">CEP</label>
+    <input type="text" class="form-control" [class.is-invalid]="!cep.valid && cep.touched" name="cep" id="cep" placeholder="CEP" [(ngModel)]="usuario.cep" required #cep="ngModel">
+    <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
+      CEP é obrigatório.
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <label for="numero" class="form-label">Número</label>
+    <input type="text" class="form-control" [class.is-invalid]="!numero.valid && numero.touched" name="numero" id="numero" placeholder="Número" [(ngModel)]="usuario.numero" required #numero="ngModel">
+    <div *ngIf="!numero.valid && numero.touched" class="alert alert-danger" role="alert">
+      Número é obrigatório.
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <label for="complemento" class="form-label">Complemento</label>
+    <input type="text" class="form-control" [class.is-invalid]="!complemento.valid && complemento.touched" name="complemento" id="complemento" placeholder="Complemento" [(ngModel)]="usuario.complemento" #complemento="ngModel">
+  </div>
+
+  <div class="col-12">
+    <label for="rua" class="form-label">Rua</label>
+    <input type="text" class="form-control" [class.is-invalid]="!rua.valid && rua.touched" name="rua" id="rua" placeholder="Rua" [(ngModel)]="usuario.rua" required #rua="ngModel">
+    <div *ngIf="!rua.valid && rua.touched" class="alert alert-danger" role="alert">
+      Rua é obrigatória.
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <label for="bairro" class="form-label">Bairro</label>
+    <input type="text" class="form-control" [class.is-invalid]="!bairro.valid && bairro.touched" name="bairro" id="bairro" placeholder="Bairro" [(ngModel)]="usuario.bairro" required #bairro="ngModel">
+    <div *ngIf="!bairro.valid && bairro.touched" class="alert alert-danger" role="alert">
+      Bairro é obrigatório.
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cidade" class="form-label">Cidade</label>
+    <input type="text" class="form-control" [class.is-invalid]="!cidade.valid && cidade.touched" name="cidade" id="cidade" placeholder="Cidade" [(ngModel)]="usuario.cidade" required #cidade="ngModel">
+    <div *ngIf="!cidade.valid && cidade.touched" class="alert alert-danger" role="alert">
+      Cidade é obrigatória.
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <label for="estado" class="form-label">Estado</label>
+    <input type="text" class="form-control" [class.is-invalid]="!estado.valid && estado.touched" name="estado" id="estado" placeholder="Estado" [(ngModel)]="usuario.estado" required #estado="ngModel">
+    <div *ngIf="!estado.valid && estado.touched" class="alert alert-danger" role="alert">
+      Estado é obrigatório.
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+      Submit
+    </button>
+  </div>
 
   <app-form-debug [form]="f"></app-form-debug>
 
