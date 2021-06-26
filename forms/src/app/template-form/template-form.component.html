@@ -18,57 +18,61 @@
     </div>
   </div>
 
-  <div class="col-md-3">
-    <label for="cep" class="form-label">CEP</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(cep)" name="cep" id="cep" placeholder="CEP" [(ngModel)]="usuario.cep" required #cep="ngModel">
-    <div *ngIf="invalidTouchedField(cep)" class="alert alert-danger" role="alert">
-      CEP é obrigatório.
-    </div>
-  </div>
+  <div ngModelGroup="endereco" class="row g-3">
 
-  <div class="col-md-3">
-    <label for="numero" class="form-label">Número</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(numero)" name="numero" id="numero" placeholder="Número" [(ngModel)]="usuario.numero" required #numero="ngModel">
-    <div *ngIf="invalidTouchedField(numero)" class="alert alert-danger" role="alert">
-      Número é obrigatório.
+    <div class="col-md-3">
+      <label for="cep" class="form-label">CEP</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(cep)" name="cep" id="cep" placeholder="CEP" [(ngModel)]="usuario.cep" required #cep="ngModel">
+      <div *ngIf="invalidTouchedField(cep)" class="alert alert-danger" role="alert">
+        CEP é obrigatório.
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-6">
-    <label for="complemento" class="form-label">Complemento</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(complemento)" name="complemento" id="complemento" placeholder="Complemento" [(ngModel)]="usuario.complemento" #complemento="ngModel">
-  </div>
-
-  <div class="col-12">
-    <label for="rua" class="form-label">Rua</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(rua)" name="rua" id="rua" placeholder="Rua" [(ngModel)]="usuario.rua" required #rua="ngModel">
-    <div *ngIf="invalidTouchedField(rua)" class="alert alert-danger" role="alert">
-      Rua é obrigatória.
+    <div class="col-md-3">
+      <label for="numero" class="form-label">Número</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(numero)" name="numero" id="numero" placeholder="Número" [(ngModel)]="usuario.numero" required #numero="ngModel">
+      <div *ngIf="invalidTouchedField(numero)" class="alert alert-danger" role="alert">
+        Número é obrigatório.
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-5">
-    <label for="bairro" class="form-label">Bairro</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(bairro)" name="bairro" id="bairro" placeholder="Bairro" [(ngModel)]="usuario.bairro" required #bairro="ngModel">
-    <div *ngIf="invalidTouchedField(bairro)" class="alert alert-danger" role="alert">
-      Bairro é obrigatório.
+    <div class="col-md-6">
+      <label for="complemento" class="form-label">Complemento</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(complemento)" name="complemento" id="complemento" placeholder="Complemento" [(ngModel)]="usuario.complemento" #complemento="ngModel">
     </div>
-  </div>
 
-  <div class="col-md-4">
-    <label for="cidade" class="form-label">Cidade</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(cidade)" name="cidade" id="cidade" placeholder="Cidade" [(ngModel)]="usuario.cidade" required #cidade="ngModel">
-    <div *ngIf="invalidTouchedField(cidade)" class="alert alert-danger" role="alert">
-      Cidade é obrigatória.
+    <div class="col-12">
+      <label for="rua" class="form-label">Rua</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(rua)" name="rua" id="rua" placeholder="Rua" [(ngModel)]="usuario.rua" required #rua="ngModel">
+      <div *ngIf="invalidTouchedField(rua)" class="alert alert-danger" role="alert">
+        Rua é obrigatória.
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-3">
-    <label for="estado" class="form-label">Estado</label>
-    <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(estado)" name="estado" id="estado" placeholder="Estado" [(ngModel)]="usuario.estado" required #estado="ngModel">
-    <div *ngIf="invalidTouchedField(estado)" class="alert alert-danger" role="alert">
-      Estado é obrigatório.
+    <div class="col-md-5">
+      <label for="bairro" class="form-label">Bairro</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(bairro)" name="bairro" id="bairro" placeholder="Bairro" [(ngModel)]="usuario.bairro" required #bairro="ngModel">
+      <div *ngIf="invalidTouchedField(bairro)" class="alert alert-danger" role="alert">
+        Bairro é obrigatório.
+      </div>
     </div>
+
+    <div class="col-md-4">
+      <label for="cidade" class="form-label">Cidade</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(cidade)" name="cidade" id="cidade" placeholder="Cidade" [(ngModel)]="usuario.cidade" required #cidade="ngModel">
+      <div *ngIf="invalidTouchedField(cidade)" class="alert alert-danger" role="alert">
+        Cidade é obrigatória.
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="estado" class="form-label">Estado</label>
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField(estado)" name="estado" id="estado" placeholder="Estado" [(ngModel)]="usuario.estado" required #estado="ngModel">
+      <div *ngIf="invalidTouchedField(estado)" class="alert alert-danger" role="alert">
+        Estado é obrigatório.
+      </div>
+    </div>
+
   </div>
 
   <div class="col-12">
