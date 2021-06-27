@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-template-form',
@@ -18,7 +17,7 @@ export class TemplateFormComponent implements OnInit {
     console.log(form) //acesso aos controles
 
     //console.log(this.usuario)
-    //acima, duas formar diferentes de retonar a mesma coisa usando o two-way data binding!
+    //acima, duas formas diferentes de retonar a mesma coisa usando o two-way data binding!
     //caso use apenas property binding, o form será atualizado, mas o objeto (usuario) não.
   }
 
@@ -33,20 +32,15 @@ export class TemplateFormComponent implements OnInit {
 
   consultaCEP(cep: any) {
 
-    //Nova variável "cep" somente com dígitos. Substitui qualquer dígito não numérico
     cep = cep.replace(/\D/g, '');
 
-    //Verifica se campo cep possui valor informado.
     if (cep != "") {
 
-      //Expressão regular para validar o CEP, que em ele só pode ter 8 dígitos de 0 a 9.
       const validacep = /^[0-9]{8}$/;
 
-      //Valida o formato do CEP.
       if(validacep.test(cep)) {
 
         this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-        .pipe(map(dados => dados))
         .subscribe(dados => console.log(dados));
 
       }
