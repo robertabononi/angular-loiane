@@ -36,9 +36,9 @@ export class TemplateFormComponent implements OnInit {
 
     if (cep != "") {
 
-      const validacep = /^[0-9]{8}$/;
+      const validaCep = /^[0-9]{8}$/;
 
-      if(validacep.test(cep)) {
+      if(validaCep.test(cep)) {
 
         this.http.get(`https://viacep.com.br/ws/${cep}/json`)
         .subscribe(dados => console.log(dados));
