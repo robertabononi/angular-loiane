@@ -19,6 +19,9 @@ export class TemplateFormComponent implements OnInit {
     //console.log(this.usuario)
     //acima, duas formas diferentes de retonar a mesma coisa usando o two-way data binding!
     //caso use apenas property binding, o form será atualizado, mas o objeto (usuario) não.
+
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+    .subscribe(dados => console.log(dados));
   }
 
   constructor(private http: HttpClient) { }
