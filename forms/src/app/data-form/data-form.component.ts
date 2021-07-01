@@ -44,4 +44,8 @@ export class DataFormComponent implements OnInit {
     },
     (error: any) => alert('Erro'));
   }
+
+  resetar() {
+    this.formulario.reset();
+  }
 }
