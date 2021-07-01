@@ -40,7 +40,7 @@ export class DataFormComponent implements OnInit {
       JSON.stringify(this.formulario.value))
     .subscribe(dados => {
       console.log(dados);
-      this.formulario.reset()
+      this.resetar()
     },
     (error: any) => alert('Erro'));
   }
