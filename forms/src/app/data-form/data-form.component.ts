@@ -25,7 +25,7 @@ export class DataFormComponent implements OnInit {
     //criando formulário com sintaxe simplificada utilizando FormBuilder
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email ]]
+      email: [null, [Validators.required, Validators.email]]
     })
   }
 
