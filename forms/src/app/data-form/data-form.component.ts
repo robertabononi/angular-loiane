@@ -29,6 +29,11 @@ export class DataFormComponent implements OnInit {
     })
   }
 
+  invalidTouchedField(campo: any) {
+    campo = this.formulario.controls[campo];
+    return campo.invalid && campo.touched;
+  }
+
   onSubmit() {
     console.log(this.formulario)
 
