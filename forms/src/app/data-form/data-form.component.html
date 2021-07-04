@@ -20,7 +20,7 @@
 
     <div class="col-md-3">
       <label for="cep" class="form-label">CEP</label>
-      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.cep')" formControlName="cep" id="cep" placeholder="CEP">
+      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.cep')" formControlName="cep" id="cep" placeholder="CEP" (blur)="consultaCEP()">
       <div *ngIf="invalidTouchedField('endereco.cep')" class="alert alert-danger" role="alert">
         CEP é obrigatório.
       </div>
