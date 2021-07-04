@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TemplateFormComponent implements OnInit {
 
-  usuario:any = {
-    nome: '',
-    email: ''
+  usuario: any = {
+    nome: null,
+    email: null
   }
 
   onSubmit(form: any){
