@@ -20,24 +20,34 @@ export class DataFormComponent implements OnInit {
     //criando formulário instanciando novas classes
     /* this.formulario = new FormGroup({
       nome: new FormControl(null),
-      email: new FormControl(null)
+      email: new FormControl(null),
+
+      endereco: new FormGroup({
+        cep: new FormControl(null),
+        numero: new FormControl(null),
+        ...
+      })
     }) */
+
     //criando formulário com sintaxe simplificada utilizando FormBuilder
     this.formulario = this.formBuilder.group({
       nome: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      cep: [null, Validators.required],
-      numero: [null, Validators.required],
-      complemento: [null],
-      rua: [null, Validators.required],
-      bairro: [null, Validators.required],
-      cidade: [null, Validators.required],
-      estado: [null, Validators.required]
+
+      endereco: this.formBuilder.group({
+        cep: [null, Validators.required],
+        numero: [null, Validators.required],
+        complemento: [null],
+        rua: [null, Validators.required],
+        bairro: [null, Validators.required],
+        cidade: [null, Validators.required],
+        estado: [null, Validators.required]
+      })
     })
   }
 
   invalidTouchedField(campo: any) {
-    campo = this.formulario.controls[campo];
+    campo = this.formulario.get(campo);
     return campo.invalid && campo.touched;
   }
 
