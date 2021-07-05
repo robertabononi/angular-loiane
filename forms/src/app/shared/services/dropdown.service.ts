@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { EstadoBr } from '../models/estado-br';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +13,6 @@ export class DropdownService {
   estadosUrl = 'assets/dados/estados-br.json';
 
   getEstadosBr() {
-    return this.http.get(this.estadosUrl)
+    return this.http.get<EstadoBr>(this.estadosUrl)
   }
 }

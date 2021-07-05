@@ -13,7 +13,7 @@ import { EstadoBr } from '../shared/models/estado-br';
 export class DataFormComponent implements OnInit {
 
   formulario!: FormGroup;
-  estados!: EstadoBr[];
+  estados!: EstadoBr;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +22,13 @@ export class DataFormComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+
+    this.dropdownService.getEstadosBr()
+      .subscribe(dados => {
+        this.estados = dados;
+        console.log(dados);
+      })
+
     //criando formulário instanciando novas classes
     /* this.formulario = new FormGroup({
       nome: new FormControl(null),
