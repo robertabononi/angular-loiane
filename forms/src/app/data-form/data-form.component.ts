@@ -104,13 +104,21 @@ export class DataFormComponent implements OnInit {
   onSubmit() {
     console.log(this.formulario)
 
-    this.http.post('https://httpbin.org/post',
+    if (this.formulario.valid) {
+
+      this.http.post('https://httpbin.org/post',
       JSON.stringify(this.formulario.value))
-    .subscribe(dados => {
-      console.log(dados);
-      this.resetar()
-    },
-    (error: any) => alert('Erro'));
+      .subscribe(dados => {
+        console.log(dados);
+        this.resetar()
+      },
+      (error: any) => alert('Erro'));
+
+    } else {
+      console.log('form inválido')
+    }
+
+
   }
 
   resetar() {
