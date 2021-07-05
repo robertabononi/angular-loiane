@@ -84,6 +84,8 @@ export class DataFormComponent implements OnInit {
         estado: dados.uf
       }
     })
+
+    this.formulario.get('endereco.complemento')?.setValue('Casa');
   }
 
   resetaDadosForm(){
