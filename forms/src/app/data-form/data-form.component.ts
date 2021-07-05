@@ -116,16 +116,22 @@ export class DataFormComponent implements OnInit {
 
     } else {
       console.log('form inválido');
-
-      Object.keys(this.formulario.controls).forEach(campo => {
-        console.log(campo)
-
-        const controller = this.formulario.get(campo);
-        controller?.markAsDirty();
-
-      })
+      this.verificaValidacoesForm(this.formulario);
     }
+  }
 
+  verificaValidacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(campo => {
+      console.log(campo)
+
+      const controller = formGroup.get(campo);
+      controller?.markAsDirty();
+
+      if (controller instanceof FormGroup) {
+        this.verificaValidacoesForm(controller)
+      }
+
+    })
   }
 
   resetar() {
