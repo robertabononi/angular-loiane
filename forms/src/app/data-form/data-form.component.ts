@@ -48,7 +48,7 @@ export class DataFormComponent implements OnInit {
 
   invalidTouchedField(campo: any) {
     campo = this.formulario.get(campo);
-    return campo.invalid && campo.touched;
+    return campo.invalid && (campo.touched || campo.dirty);
   }
 
   consultaCEP() {
@@ -115,9 +115,16 @@ export class DataFormComponent implements OnInit {
       (error: any) => alert('Erro'));
 
     } else {
-      console.log('form inválido')
-    }
+      console.log('form inválido');
 
+      Object.keys(this.formulario.controls).forEach(campo => {
+        console.log(campo)
+
+        const controller = this.formulario.get(campo);
+        controller?.markAsDirty();
+
+      })
+    }
 
   }
 
