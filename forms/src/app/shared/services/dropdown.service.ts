@@ -6,9 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DropdownService {
 
-  constructor(http: HttpClient) { }
+  constructor(private http: HttpClient) { }
+
+  estadosUrl = 'assets/dados/estados-br.json';
 
   getEstadosBr() {
-
+    return this.http.get(this.estadosUrl)
   }
 }

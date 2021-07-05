@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+import { DropdownService } from '../shared/services/dropdown.service';
+
 @Component({
   selector: 'app-data-form',
   templateUrl: './data-form.component.html',
@@ -13,7 +15,8 @@ export class DataFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private dropdownService: DropdownService
     ) {}
 
   ngOnInit(): void {
