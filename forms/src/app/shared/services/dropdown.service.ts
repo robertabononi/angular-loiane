@@ -13,6 +13,6 @@ export class DropdownService {
   estadosUrl = 'assets/dados/estados-br.json';
 
   getEstadosBr() {
-    return this.http.get<EstadoBr>(this.estadosUrl)
+    return this.http.get<EstadoBr[]>(this.estadosUrl)
   }
 }

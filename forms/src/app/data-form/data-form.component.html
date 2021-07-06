@@ -65,7 +65,12 @@
 
     <div class="col-md-3">
       <label for="estado" class="form-label">Estado</label>
-      <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.estado')" formControlName="estado" id="estado" placeholder="Estado">
+      <select class="form-select" [class.is-invalid]="invalidTouchedField('endereco.estado')" formControlName="estado" id="estado">
+        <option value=null selected>Estado</option>
+        <option *ngFor="let estado of estados" [value]="estado.sigla">
+          {{ estado.nome }}
+        </option>
+      </select>
       <div *ngIf="invalidTouchedField('endereco.estado')" class="alert alert-danger" role="alert">
         Estado é obrigatório.
       </div>

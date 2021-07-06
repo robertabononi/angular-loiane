@@ -14,7 +14,7 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 export class DataFormComponent implements OnInit {
 
   formulario!: FormGroup;
-  estados!: EstadoBr;
+  estados!: EstadoBr[];
 
   constructor(
     private formBuilder: FormBuilder,
