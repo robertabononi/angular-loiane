@@ -7,6 +7,7 @@ import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { CadastroService } from '../shared/services/cadastro.service';
+import { Cargo } from '../shared/models/cargo';
 
 @Component({
   selector: 'app-data-form',
@@ -17,7 +18,7 @@ export class DataFormComponent implements OnInit {
 
   formulario!: FormGroup;
   estados!: Observable<EstadoBr[]>;
-  cargos!: any[];
+  cargos!: Cargo[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -113,7 +114,6 @@ export class DataFormComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
     console.log(this.formulario)
 
@@ -149,5 +149,14 @@ export class DataFormComponent implements OnInit {
 
   resetar() {
     this.formulario.reset();
+  }
+
+  setarCargo() {
+    const cargo = { nome: 'Dev', nivel: 'Pleno', descricao: 'Dev Pl' };
+    this.formulario.get('cargo')?.setValue(cargo);
+  }
+
+  compararCargos(objeto1: Cargo, objeto2: Cargo): boolean {
+    return objeto1 && objeto2 ? (objeto1.nivel === objeto2.nivel && objeto1.descricao === objeto2.descricao) : objeto1 === objeto2;
   }
 }
