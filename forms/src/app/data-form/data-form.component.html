@@ -67,7 +67,7 @@
       <label for="estado" class="form-label">Estado</label>
       <select class="form-select" [class.is-invalid]="invalidTouchedField('endereco.estado')" formControlName="estado" id="estado">
         <option value=null selected>Estado</option>
-        <option *ngFor="let estado of estados" [value]="estado.sigla">
+        <option *ngFor="let estado of estados | async" [value]="estado.sigla">
           {{ estado.nome }}
         </option>
       </select>
