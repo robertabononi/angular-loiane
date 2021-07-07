@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
@@ -20,6 +20,7 @@ export class DataFormComponent implements OnInit {
   estados!: Observable<EstadoBr[]>;
   cargos!: Cargo[];
   tecnologias!: Tecnologia[];
+  newsletters!: any[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +35,7 @@ export class DataFormComponent implements OnInit {
 
     this.cargos = this.dropdownService.getCargos();
     this.tecnologias = this.dropdownService.getTecnologias();
+    this.newsletters = this.dropdownService.getNewsletter()
 
     /* this.dropdownService.getEstadosBr()
       .subscribe(dados => {
@@ -69,7 +71,8 @@ export class DataFormComponent implements OnInit {
       }),
 
       cargo: [null],
-      tecnologias: [null]
+      tecnologias: [null],
+      newsletter: ['sim']
     })
   }
 

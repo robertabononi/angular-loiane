@@ -38,4 +38,13 @@ export class DropdownService {
   getTecnologias() {
     return this.tecnologias;
   }
+
+  newsletter: any[] = [
+    { nome: 'Sim', valor: 'sim' },
+    { nome: 'Não', valor: 'nao'}
+  ]
+
+  getNewsletter() {
+    return this.newsletter;
+  }
 }

@@ -80,8 +80,8 @@
 
   <div class="form-group">
     <div class="row g-3">
-      
-      <div class="col-3">
+
+      <div class="col-4">
         <label for="cargo" class="form-label">Cargo</label>
         <select class="form-select" formControlName="cargo" id="cargo" [compareWith]="compararCargos">
           <option value=null selected>Cargo</option>
@@ -91,13 +91,27 @@
         </select>
       </div>
 
-      <div class="col-3">
+      <div class="col-4">
         <label for="tecnologias" class="form-label">Tecnologias</label>
         <select multiple class="form-select" formControlName="tecnologias" id="tecnologias">
           <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">
             {{ tecnologia.descricao }}
           </option>
         </select>
+      </div>
+
+      <div class="col-4">
+        <div>
+          <label for="newsletter" class="form-label">Newsletter</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <div *ngFor="let newsletter of newsletters">
+            <input class="form-check-input" type="radio" formControlName="newsletter" id="newsletter" [value]="newsletter.valor">
+            <label class="form-check-label">
+              {{ newsletter.nome }}
+            </label>
+          </div>
+        </div>
       </div>
 
     </div>
