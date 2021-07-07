@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
-import { CadastroService } from '../shared/services/cadastro.service';
 import { Cargo } from '../shared/models/cargo';
 
 @Component({
@@ -24,15 +23,14 @@ export class DataFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropdownService: DropdownService,
-    private consultaCepService: ConsultaCepService,
-    private cadastroService: CadastroService
+    private consultaCepService: ConsultaCepService
     ) {}
 
   ngOnInit(): void {
 
     this.estados = this.dropdownService.getEstadosBr();
 
-    this.cargos = this.cadastroService.getCargos()
+    this.cargos = this.dropdownService.getCargos();
 
     /* this.dropdownService.getEstadosBr()
       .subscribe(dados => {

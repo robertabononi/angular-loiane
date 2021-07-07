@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { EstadoBr } from '../models/estado-br';
+import { Cargo } from '../models/cargo';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,15 @@ export class DropdownService {
 
   getEstadosBr() {
     return this.http.get<EstadoBr[]>(this.estadosUrl)
+  }
+
+  cargos: Cargo[] = [
+    { nome: 'Dev', nivel: 'Junior', descricao: 'Dev Jr' },
+    { nome: 'Dev', nivel: 'Pleno', descricao: 'Dev Pl' },
+    { nome: 'Dev', nivel: 'Senior', descricao: 'Dev Sr' }
+  ]
+
+  getCargos() {
+    return this.cargos
   }
 }
