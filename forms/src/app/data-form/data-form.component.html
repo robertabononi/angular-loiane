@@ -81,7 +81,7 @@
   <div class="form-group">
     <div class="row g-3">
 
-      <div class="col-4">
+      <div class="col-md-5">
         <label for="cargo" class="form-label">Cargo</label>
         <select class="form-select" formControlName="cargo" id="cargo" [compareWith]="compararCargos">
           <option value=null selected>Cargo</option>
@@ -91,7 +91,7 @@
         </select>
       </div>
 
-      <div class="col-4">
+      <div class="col-md-4">
         <label for="tecnologias" class="form-label">Tecnologias</label>
         <select multiple class="form-select" formControlName="tecnologias" id="tecnologias">
           <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">
@@ -100,7 +100,7 @@
         </select>
       </div>
 
-      <div class="col-4">
+      <div class="col-md-3">
         <div>
           <label for="newsletter" class="form-label">Newsletter</label>
         </div>
@@ -117,20 +117,23 @@
     </div>
   </div>
 
+
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">
-      Submit
-    </button>
-    <button class="btn" (click)="resetar()">
-      Cancelar
-    </button>
-    <button class="btn" (click)="setarCargo()">
-      Cargo
-    </button>
-    <button class="btn" (click)="setarTecnologias()">
-      Tecnologias
-    </button>
+      <button type="submit" class="btn btn-primary me-2">
+        Submit
+      </button>
+      <button class="btn btn-light me-2" (click)="resetar()">
+        Cancelar
+      </button>
+      <button class="btn btn-outline-primary me-2" (click)="setarCargo()">
+        Cargo
+      </button>
+      <button class="btn btn-outline-primary" (click)="setarTecnologias()">
+        Tecnologias
+      </button>
   </div>
+
+
 
   <app-form-debug [form]="formulario"></app-form-debug>
 
