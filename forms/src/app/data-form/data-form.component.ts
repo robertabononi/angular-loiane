@@ -7,6 +7,7 @@ import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { Cargo } from '../shared/models/cargo';
+import { Tecnologia } from '../shared/models/tecnologia';
 
 @Component({
   selector: 'app-data-form',
@@ -18,6 +19,7 @@ export class DataFormComponent implements OnInit {
   formulario!: FormGroup;
   estados!: Observable<EstadoBr[]>;
   cargos!: Cargo[];
+  tecnologias!: Tecnologia[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,6 +33,7 @@ export class DataFormComponent implements OnInit {
     this.estados = this.dropdownService.getEstadosBr();
 
     this.cargos = this.dropdownService.getCargos();
+    this.tecnologias = this.dropdownService.getTecnologias();
 
     /* this.dropdownService.getEstadosBr()
       .subscribe(dados => {
@@ -65,7 +68,8 @@ export class DataFormComponent implements OnInit {
         estado: [null, Validators.required]
       }),
 
-      cargo: [null]
+      cargo: [null],
+      tecnologias: [null]
     })
   }
 
@@ -156,5 +160,9 @@ export class DataFormComponent implements OnInit {
 
   compararCargos(objeto1: Cargo, objeto2: Cargo): boolean {
     return objeto1 && objeto2 ? (objeto1.nivel === objeto2.nivel && objeto1.descricao === objeto2.descricao) : objeto1 === objeto2;
+  }
+
+  setarTecnologias() {
+    this.formulario.get('tecnologias')?.setValue(['javascript', 'java', 'ruby'])
   }
 }

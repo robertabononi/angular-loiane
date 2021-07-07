@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { EstadoBr } from '../models/estado-br';
 import { Cargo } from '../models/cargo';
+import { Tecnologia } from '../models/tecnologia';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,16 @@ export class DropdownService {
 
   getCargos() {
     return this.cargos
+  }
+
+  tecnologias: Tecnologia[] = [
+    { nome: 'javascript', descricao: 'JavaScript' },
+    { nome: 'java', descricao: 'Java' },
+    { nome: 'php', descricao: 'PHP' },
+    { nome: 'ruby', descricao: 'Ruby' }
+  ]
+
+  getTecnologias() {
+    return this.tecnologias;
   }
 }
