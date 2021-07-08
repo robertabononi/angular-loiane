@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators, AbstractControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
@@ -125,7 +125,7 @@ export class DataFormComponent implements OnInit {
 buildFrameworks() {
     const values = this.frameworks.map(value => this.formBuilder.control(false))
 
-    return this.formBuilder.array(values)
+    return this.formBuilder.array(values, this.requiredMinCheckbox(1))
   }
 
   getFrameworksConstrols() {
@@ -133,15 +133,23 @@ buildFrameworks() {
   }
 
   requiredMinCheckbox(min = 1) {
-    const validator = (formArray: FormArray) => {
-      const values = formArray.controls;
+    const validator = (formArray: AbstractControl) => {
+      /* const values = formArray.controls;
       let totalChecked = 0;
       for (let i = 0; i < values.length; i++) {
         if(values[i].value) {
           totalChecked += 1
         }
+      } */
+
+      if (formArray instanceof FormArray) {
+        const totalChecked = formArray.controls
+          .map(values => values.value)
+          .reduce((total, current) => current ? total + current : total, 0)
+
+        return totalChecked >= min ? null : { required: true }
       }
-      return totalChecked >= min ? null : { required: true }
+      throw new Error('formArray is not an instance of FormArray');
     }
     return validator;
   }

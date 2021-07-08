@@ -123,9 +123,12 @@
         <label for="frameworks" class="form-label">Frameworks</label>
       </div>
       <div class="form-check form-check-inline" formArrayName="frameworks" *ngFor="let framework of getFrameworksConstrols(); index as i">
-        <input class="form-check-input" type="checkbox" id="frameworks" [formControlName]="i">
+        <input class="form-check-input" type="checkbox" id="frameworks" [formControlName]="i" [class.is-invalid]="invalidTouchedField('frameworks')">
         <label class="form-check-label">{{ frameworks[i] }}</label>
       </div>
+    </div>
+    <div *ngIf="invalidTouchedField('frameworks')" class="alert alert-danger" role="alert">
+      Selecione pelo menos 1 opção.
     </div>
   </div>
 
