@@ -132,6 +132,20 @@ buildFrameworks() {
     return (this.formulario.get('frameworks') as FormArray).controls;
   }
 
+  requiredMinCheckbox(min = 1) {
+    const validator = (formArray: FormArray) => {
+      const values = formArray.controls;
+      let totalChecked = 0;
+      for (let i = 0; i < values.length; i++) {
+        if(values[i].value) {
+          totalChecked = 1
+        }
+      }
+      return totalChecked >= min ? null : { required: true }
+    }
+    return validator;
+  }
+
   onSubmit() {
     console.log(this.formulario)
 
