@@ -138,7 +138,7 @@ buildFrameworks() {
       let totalChecked = 0;
       for (let i = 0; i < values.length; i++) {
         if(values[i].value) {
-          totalChecked = 1
+          totalChecked += 1
         }
       }
       return totalChecked >= min ? null : { required: true }
