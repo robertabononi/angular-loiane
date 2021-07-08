@@ -79,16 +79,6 @@ export class DataFormComponent implements OnInit {
     })
   }
 
-  buildFrameworks() {
-    const values = this.frameworks.map(value => this.formBuilder.control(false))
-
-    return this.formBuilder.array(values)
-  }
-
-  getFrameworksConstrols() {
-    return (this.formulario.get('frameworks') as FormArray).controls;
-  }
-
   invalidTouchedField(campo: any) {
     campo = this.formulario.get(campo);
     return campo.invalid && (campo.touched || campo.dirty);
@@ -130,6 +120,16 @@ export class DataFormComponent implements OnInit {
         estado: null
       }
     });
+  }
+
+buildFrameworks() {
+    const values = this.frameworks.map(value => this.formBuilder.control(false))
+
+    return this.formBuilder.array(values)
+  }
+
+  getFrameworksConstrols() {
+    return (this.formulario.get('frameworks') as FormArray).controls;
   }
 
   onSubmit() {
