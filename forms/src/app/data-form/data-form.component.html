@@ -117,6 +117,19 @@
     </div>
   </div>
 
+  <div id="frameworks" class="row">
+    <div class="col-md-3">
+      <div>
+        <label for="frameworks" class="form-label">Frameworks</label>
+      </div>
+      <div class="form-check form-check-inline" formArrayName="frameworks" *ngFor="let framework of getFrameworksConstrols(); index as i">
+        <input class="form-check-input" type="checkbox" id="frameworks" [formControlName]="i">
+        <label class="form-check-label">{{ frameworks[i] }}</label>
+      </div>
+    </div>
+  </div>
+
+
   <div class="form-group">
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" [class.is-invalid]="invalidTouchedField('aceitarTermos')" formControlName="aceitarTermos" id="aceitarTermos" >

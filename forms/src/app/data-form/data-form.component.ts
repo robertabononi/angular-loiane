@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
@@ -21,6 +21,7 @@ export class DataFormComponent implements OnInit {
   cargos!: Cargo[];
   tecnologias!: Tecnologia[];
   newsletters!: any[];
+  frameworks: string[] = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -73,8 +74,19 @@ export class DataFormComponent implements OnInit {
       cargo: [null],
       tecnologias: [null],
       newsletter: ['sim'],
-      aceitarTermos: [null, Validators.requiredTrue]
+      aceitarTermos: [null, Validators.requiredTrue],
+      frameworks: this.buildFrameworks()
     })
+  }
+
+  buildFrameworks() {
+    const values = this.frameworks.map(value => this.formBuilder.control(false))
+
+    return this.formBuilder.array(values)
+  }
+
+  getFrameworksConstrols() {
+    return (this.formulario.get('frameworks') as FormArray).controls;
   }
 
   invalidTouchedField(campo: any) {
@@ -123,10 +135,20 @@ export class DataFormComponent implements OnInit {
   onSubmit() {
     console.log(this.formulario)
 
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((value:any, index:any) => value ? this.frameworks[index] : null)
+        .filter((value: any) => value !== null)
+    })
+
+    console.log(valueSubmit)
+
     if (this.formulario.valid) {
 
       this.http.post('https://httpbin.org/post',
-      JSON.stringify(this.formulario.value))
+      JSON.stringify(valueSubmit))
       .subscribe(dados => {
         console.log(dados);
         //this.resetar()
