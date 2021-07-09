@@ -1,4 +1,4 @@
-import { AbstractControl, FormArray } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl } from "@angular/forms";
 
 export class FormValidations {
   static requiredMinCheckbox(min = 1) {
@@ -21,5 +21,18 @@ export class FormValidations {
       throw new Error('formArray is not an instance of FormArray');
     }
     return validator;
+  }
+
+  static cepValidator(control: FormControl) {
+
+    const cep = control.value;
+
+    if (cep && cep !== '') {
+
+      const validaCep = /^[0-9]{8}$/;
+
+      return validaCep.test(cep) ? null as any : { cepInvalido: true };
+    }
+    return null; //caso seja válido
   }
 }

@@ -63,7 +63,7 @@ export class DataFormComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
 
       endereco: this.formBuilder.group({
-        cep: [null, Validators.required],
+        cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, Validators.required],
         complemento: [null],
         rua: [null, Validators.required],
@@ -85,9 +85,14 @@ export class DataFormComponent implements OnInit {
     return campo.invalid && (campo.touched || campo.dirty);
   }
 
+  verificaRequired(campo: any) {
+    campo = this.formulario.get(campo);
+    return campo.hasError('required') && (campo.touched || campo.dirty)
+  }
+
   consultaCEP() {
 
-    let cep = this.formulario.get('endereco.cep')!.value;
+    let cep = this.formulario.get('endereco.cep')?.value;
 
     if (cep != null && cep !== '') {
       this.consultaCepService.consultaCEP(cep)
@@ -123,7 +128,7 @@ export class DataFormComponent implements OnInit {
     });
   }
 
-buildFrameworks() {
+  buildFrameworks() {
     const values = this.frameworks.map(value => this.formBuilder.control(false))
 
     return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1))

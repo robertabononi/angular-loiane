@@ -21,8 +21,11 @@
     <div class="col-md-3">
       <label for="cep" class="form-label">CEP</label>
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.cep')" formControlName="cep" id="cep" placeholder="CEP" (blur)="consultaCEP()">
-      <div *ngIf="invalidTouchedField('endereco.cep')" class="alert alert-danger" role="alert">
+      <div *ngIf="verificaRequired('endereco.cep')" class="alert alert-danger" role="alert">
         CEP é obrigatório.
+      </div>
+      <div *ngIf="formulario.get('endereco.cep')?.hasError('cepInvalido')" class="alert alert-danger" role="alert">
+        CEP inválido.
       </div>
     </div>
 
@@ -131,7 +134,6 @@
       Selecione pelo menos 1 opção.
     </div>
   </div>
-
 
   <div class="form-group">
     <div class="form-check form-check-inline">
