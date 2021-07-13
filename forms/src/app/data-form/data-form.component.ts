@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -84,6 +84,17 @@ export class DataFormComponent implements OnInit {
       aceitarTermos: [null, Validators.requiredTrue],
       frameworks: this.buildFrameworks()
     })
+
+    this.formulario.get('endereco.cep')?.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        tap(value => console.log('Status do CEP: ', value)),
+        switchMap(status => status === 'VALID' ?
+          this.consultaCepService.consultaCEP(this.formulario.get('endereco.cep')?.value)
+          : EMPTY
+        )
+      )
+      .subscribe(dados => dados ? this.populaDadosForm(dados) : {} );
   }
 
   invalidTouchedField(campo: any) {

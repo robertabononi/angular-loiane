@@ -40,10 +40,7 @@
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.cep')" formControlName="cep" id="cep" placeholder="CEP" (blur)="consultaCEP()">
 
       <app-error-msg [control]="formulario.get('endereco.cep')" label="CEP"></app-error-msg>
-
-      <div *ngIf="formulario.get('endereco.cep')?.hasError('cepInvalido')" class="alert alert-danger" role="alert">
-        CEP inválido.
-      </div>
+      
     </div>
 
     <div class="col-md-3">

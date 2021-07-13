@@ -13,18 +13,14 @@ export class ConsultaCepService {
 
     cep = cep.replace(/\D/g, '');
 
-    if (cep != "") {
+    if (cep !== '') {
 
       const validaCep = /^[0-9]{8}$/;
 
       if(validaCep.test(cep)) {
-
         return this.http.get(`https://viacep.com.br/ws/${cep}/json`);
-
       }
     }
-
     return of({});
-
   }
 }
