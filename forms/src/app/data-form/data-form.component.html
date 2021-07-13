@@ -3,17 +3,13 @@
   <div class="col-12">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('nome')" formControlName="nome" id="nome" placeholder="Nome">
-    <div *ngIf="invalidTouchedField('nome')" class="alert alert-danger" role="alert">
-      Nome é obrigatório.
-    </div>
+    <app-error-msg [control]="formulario.get('nome')" label="Nome"></app-error-msg>
   </div>
 
   <div class="col-12">
     <label for="email" class="form-label">E-mail</label>
     <input type="email" class="form-control" [class.is-invalid]="invalidTouchedField('email')" [class.is-valid]="formulario.get('email')?.valid" formControlName="email" id="email" placeholder="nome@email.com">
-    <div *ngIf="invalidTouchedField('email')" class="alert alert-danger" role="alert">
-      E-mail é obrigatório.
-    </div>
+    <app-error-msg [control]="formulario.get('email')" label="E-mail"></app-error-msg>
     <div *ngIf="formulario.get('email')?.status === 'PENDING'" class="alert alert-primary" role="alert">
       Validando e-mail...
     </div>
