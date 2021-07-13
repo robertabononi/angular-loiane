@@ -3,13 +3,17 @@
   <div class="col-12">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('nome')" formControlName="nome" id="nome" placeholder="Nome">
+
     <app-error-msg [control]="formulario.get('nome')" label="Nome"></app-error-msg>
+
   </div>
 
   <div class="col-12">
     <label for="email" class="form-label">E-mail</label>
     <input type="email" class="form-control" [class.is-invalid]="invalidTouchedField('email')" [class.is-valid]="formulario.get('email')?.valid" formControlName="email" id="email" placeholder="nome@email.com">
+
     <app-error-msg [control]="formulario.get('email')" label="E-mail"></app-error-msg>
+
     <div *ngIf="formulario.get('email')?.status === 'PENDING'" class="alert alert-primary" role="alert">
       Validando e-mail...
     </div>
@@ -34,9 +38,9 @@
     <div class="col-md-3">
       <label for="cep" class="form-label">CEP</label>
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.cep')" formControlName="cep" id="cep" placeholder="CEP" (blur)="consultaCEP()">
-      <div *ngIf="verificaRequired('endereco.cep')" class="alert alert-danger" role="alert">
-        CEP é obrigatório.
-      </div>
+
+      <app-error-msg [control]="formulario.get('endereco.cep')" label="CEP"></app-error-msg>
+
       <div *ngIf="formulario.get('endereco.cep')?.hasError('cepInvalido')" class="alert alert-danger" role="alert">
         CEP inválido.
       </div>
@@ -45,9 +49,9 @@
     <div class="col-md-3">
       <label for="numero" class="form-label">Número</label>
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.numero')" formControlName="numero" id="numero" placeholder="Número">
-      <div *ngIf="invalidTouchedField('endereco.numero')" class="alert alert-danger" role="alert">
-        Número é obrigatório.
-      </div>
+
+      <app-error-msg [control]="formulario.get('endereco.numero')" label="Número"></app-error-msg>
+
     </div>
 
     <div class="col-md-6">
@@ -58,25 +62,25 @@
     <div class="col-12">
       <label for="rua" class="form-label">Rua</label>
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.rua')" formControlName="rua" id="rua" placeholder="Rua">
-      <div *ngIf="invalidTouchedField('endereco.rua')" class="alert alert-danger" role="alert">
-        Rua é obrigatória.
-      </div>
+
+      <app-error-msg [control]="formulario.get('endereco.rua')" label="Rua"></app-error-msg>
+
     </div>
 
     <div class="col-md-5">
       <label for="bairro" class="form-label">Bairro</label>
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.bairro')" formControlName="bairro" id="bairro" placeholder="Bairro">
-      <div *ngIf="invalidTouchedField('endereco.bairro')" class="alert alert-danger" role="alert">
-        Bairro é obrigatório.
-      </div>
+
+      <app-error-msg [control]="formulario.get('endereco.bairro')" label="Bairro"></app-error-msg>
+
     </div>
 
     <div class="col-md-4">
       <label for="cidade" class="form-label">Cidade</label>
       <input type="text" class="form-control" [class.is-invalid]="invalidTouchedField('endereco.cidade')" formControlName="cidade" id="cidade" placeholder="Cidade">
-      <div *ngIf="invalidTouchedField('endereco.cidade')" class="alert alert-danger" role="alert">
-        Cidade é obrigatória.
-      </div>
+
+      <app-error-msg [control]="formulario.get('endereco.cidade')" label="Cidade"></app-error-msg>
+
     </div>
 
     <div class="col-md-3">
@@ -87,9 +91,9 @@
           {{ estado.nome }}
         </option>
       </select>
-      <div *ngIf="invalidTouchedField('endereco.estado')" class="alert alert-danger" role="alert">
-        Estado é obrigatório.
-      </div>
+
+      <app-error-msg [control]="formulario.get('endereco.estado')" label="Estado"></app-error-msg>
+
     </div>
 
   </div>

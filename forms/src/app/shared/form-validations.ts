@@ -69,6 +69,7 @@ export class FormValidations {
     const config: any = {
       'required': `${fieldName} é obrigatório.`,
       'minlength': `${fieldName} precisa ter no mínimo ${validatorValue.requiredLength} caracteres.`,
+      'email': 'E-mail inválido',
       'cepInvalido': 'CEP inválido'
     }
     return config[validatorName];
