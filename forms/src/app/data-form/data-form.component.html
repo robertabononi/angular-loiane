@@ -10,9 +10,18 @@
 
   <div class="col-12">
     <label for="email" class="form-label">E-mail</label>
-    <input type="email" class="form-control" [class.is-invalid]="invalidTouchedField('email')" formControlName="email" id="email" placeholder="nome@email.com">
+    <input type="email" class="form-control" [class.is-invalid]="invalidTouchedField('email')" [class.is-valid]="formulario.get('email')?.valid" formControlName="email" id="email" placeholder="nome@email.com">
     <div *ngIf="invalidTouchedField('email')" class="alert alert-danger" role="alert">
       E-mail é obrigatório.
+    </div>
+    <div *ngIf="formulario.get('email')?.status === 'PENDING'" class="alert alert-primary" role="alert">
+      Validando e-mail...
+    </div>
+    <div *ngIf="formulario.get('email')?.status === 'VALID'" class="valid-feedback" class="alert alert-success" role="alert">
+      E-mail válido.
+    </div>
+    <div *ngIf="formulario.get('email')?.hasError('emailInvalido')" class="alert alert-danger" role="alert">
+      E-mail já cadastrado.
     </div>
   </div>
 
