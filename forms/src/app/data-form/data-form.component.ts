@@ -9,6 +9,7 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { Cargo } from '../shared/models/cargo';
 import { Tecnologia } from '../shared/models/tecnologia';
 import { FormValidations } from '../shared/form-validations';
+import { VerificaEmailService } from './services/verificaEmail.service';
 
 @Component({
   selector: 'app-data-form',
@@ -28,10 +29,13 @@ export class DataFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropdownService: DropdownService,
-    private consultaCepService: ConsultaCepService
+    private consultaCepService: ConsultaCepService,
+    private verificaEmailService: VerificaEmailService
     ) {}
 
   ngOnInit(): void {
+
+    this.verificaEmailService.verificarEmail('email@email.com').subscribe();
 
     this.estados = this.dropdownService.getEstadosBr();
 
