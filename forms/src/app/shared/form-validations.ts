@@ -16,7 +16,7 @@ export class FormValidations {
           .map(values => values.value)
           .reduce((total, current) => current ? total + current : total, 0)
 
-        return totalChecked >= min ? null : { required: true }
+        return totalChecked >= min ? null : { requiredMinCheckbox: 1 }
       }
       throw new Error('formArray is not an instance of FormArray');
     }
@@ -69,8 +69,12 @@ export class FormValidations {
     const config: any = {
       'required': `${fieldName} é obrigatório.`,
       'minlength': `${fieldName} precisa ter no mínimo ${validatorValue.requiredLength} caracteres.`,
-      'email': 'E-mail inválido',
-      'cepInvalido': 'CEP inválido'
+      'email': 'E-mail inválido.',
+      'emailInvalido': 'E-mail já cadastrado.',
+      'equalsTo': `${fieldName} não é correspondente.`,
+      'cepInvalido': 'CEP inválido.',
+      'requiredMinCheckbox': `Selecione pelo menos ${validatorValue} opção.`,
+      'requiredTrue': 'Por favor, aceite os termos de uso para continuar.',
     }
     return config[validatorName];
   }

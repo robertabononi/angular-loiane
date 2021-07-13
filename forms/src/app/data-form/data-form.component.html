@@ -14,23 +14,22 @@
 
     <app-error-msg [control]="formulario.get('email')" label="E-mail"></app-error-msg>
 
+    <app-error-msg [control]="formulario.get('email')?.hasError('emailInvalido')" label="E-mail"></app-error-msg>
+
     <div *ngIf="formulario.get('email')?.status === 'PENDING'" class="alert alert-primary" role="alert">
       Validando e-mail...
     </div>
     <div *ngIf="formulario.get('email')?.status === 'VALID'" class="valid-feedback" class="alert alert-success" role="alert">
       E-mail válido.
     </div>
-    <div *ngIf="formulario.get('email')?.hasError('emailInvalido')" class="alert alert-danger" role="alert">
-      E-mail já cadastrado.
-    </div>
   </div>
 
   <div class="col-12">
     <label for="confirmarEmail" class="form-label">Confirmar E-mail</label>
     <input type="confirmarEmail" class="form-control" [class.is-invalid]="formulario.get('confirmarEmail')?.hasError('equalsTo')" formControlName="confirmarEmail" id="confirmarEmail" placeholder="nome@email.com">
-    <div *ngIf="formulario.get('confirmarEmail')?.hasError('equalsTo')" class="alert alert-danger" role="alert">
-      E-mails não são iguais.
-    </div>
+
+    <app-error-msg [control]="formulario.get('confirmarEmail')" label="E-mail"></app-error-msg>
+
   </div>
 
   <div class="row g-3" formGroupName="endereco">
@@ -100,12 +99,15 @@
 
       <div class="col-md-5">
         <label for="cargo" class="form-label">Cargo</label>
-        <select class="form-select" formControlName="cargo" id="cargo" [compareWith]="compararCargos">
+        <select class="form-select" formControlName="cargo" [class.is-invalid]="invalidTouchedField('cargo')" id="cargo" [compareWith]="compararCargos">
           <option value=null selected>Cargo</option>
           <option *ngFor="let cargo of cargos" [ngValue]="cargo">
             {{ cargo.descricao }}
           </option>
         </select>
+
+        <app-error-msg [control]="formulario.get('cargo')" label="Cargo"></app-error-msg>
+
       </div>
 
       <div class="col-md-4">
@@ -143,9 +145,9 @@
         <input class="form-check-input" type="checkbox" id="frameworks" [formControlName]="i" [class.is-invalid]="invalidTouchedField('frameworks')">
         <label class="form-check-label">{{ frameworks[i] }}</label>
       </div>
-    </div>
-    <div *ngIf="invalidTouchedField('frameworks')" class="alert alert-danger" role="alert">
-      Selecione pelo menos 1 opção.
+      
+      <app-error-msg [control]="formulario.get('frameworks')" label="Frameworks"></app-error-msg>
+
     </div>
   </div>
 
@@ -154,9 +156,11 @@
       <input class="form-check-input" type="checkbox" [class.is-invalid]="invalidTouchedField('aceitarTermos')" formControlName="aceitarTermos" id="aceitarTermos" >
       <label class="form-check-label">Aceito os termos de uso.</label>
     </div>
+    
     <div *ngIf="invalidTouchedField('aceitarTermos')" class="alert alert-danger" role="alert">
       Por favor, aceite os termos de uso para continuar.
     </div>
+
   </div>
 
   <div class="col-12">
