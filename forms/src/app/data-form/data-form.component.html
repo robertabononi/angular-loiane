@@ -1,7 +1,6 @@
 <form class="row g-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-  <app-input-field class="col-12" formControlName="nome" 
-    [classeCss]="aplicaCssErro('nome')" id="nome" label="Nome" type="text" placeholder="Nome" [control]="formulario.get('nome')"
+  <app-input-field class="col-12" formControlName="nome" [classeCss]="aplicaCssErro('nome')" id="nome" label="Nome" type="text" placeholder="Nome" [control]="formulario.get('nome')"
   ></app-input-field>
 
   <!--div class="col-12">

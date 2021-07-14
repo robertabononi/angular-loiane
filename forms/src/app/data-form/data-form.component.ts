@@ -11,15 +11,16 @@ import { Cargo } from '../shared/models/cargo';
 import { Tecnologia } from '../shared/models/tecnologia';
 import { FormValidations } from '../shared/form-validations';
 import { VerificaEmailService } from './services/verificaEmail.service';
+import { BaseFormComponent } from '../shared/base-form/base-form.component';
 
 @Component({
   selector: 'app-data-form',
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.css']
 })
-export class DataFormComponent implements OnInit {
+export class DataFormComponent extends BaseFormComponent implements OnInit {
 
-  formulario!: FormGroup;
+  //formulario!: FormGroup;
   estados!: Observable<EstadoBr[]>;
   cargos!: Cargo[];
   tecnologias!: Tecnologia[];
@@ -32,7 +33,9 @@ export class DataFormComponent implements OnInit {
     private dropdownService: DropdownService,
     private consultaCepService: ConsultaCepService,
     private verificaEmailService: VerificaEmailService
-    ) {}
+    ) {
+      super()
+    }
 
   ngOnInit(): void {
 
@@ -97,16 +100,6 @@ export class DataFormComponent implements OnInit {
       .subscribe(dados => dados ? this.populaDadosForm(dados) : {} );
   }
 
-  invalidTouchedField(campo: any) {
-    campo = this.formulario.get(campo);
-    return campo.invalid && (campo.touched || campo.dirty);
-  }
-
-  verificaRequired(campo: any) {
-    campo = this.formulario.get(campo);
-    return campo.hasError('required') && (campo.touched || campo.dirty)
-  }
-
   consultaCEP() {
 
     let cep = this.formulario.get('endereco.cep')?.value;
@@ -155,7 +148,7 @@ export class DataFormComponent implements OnInit {
     return (this.formulario.get('frameworks') as FormArray).controls;
   }
 
-  onSubmit() {
+  submit() {
     console.log(this.formulario)
 
     let valueSubmit = Object.assign({}, this.formulario.value);
@@ -167,39 +160,14 @@ export class DataFormComponent implements OnInit {
     })
 
     console.log(valueSubmit)
-
-    if (this.formulario.valid) {
-
-      this.http.post('https://httpbin.org/post',
+    
+    this.http.post('https://httpbin.org/post',
       JSON.stringify(valueSubmit))
       .subscribe(dados => {
         console.log(dados);
         //this.resetar()
       },
       (error: any) => alert('Erro'));
-
-    } else {
-      console.log('form inválido');
-      this.verificaValidacoesForm(this.formulario);
-    }
-  }
-
-  verificaValidacoesForm(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(campo => {
-      console.log(campo)
-
-      const controller = formGroup.get(campo);
-      controller?.markAsDirty();
-
-      if (controller instanceof FormGroup) {
-        this.verificaValidacoesForm(controller)
-      }
-
-    })
-  }
-
-  resetar() {
-    this.formulario.reset();
   }
 
   setarCargo() {
@@ -218,10 +186,6 @@ export class DataFormComponent implements OnInit {
   validarEmail(formControl: FormControl) {
     return this.verificaEmailService.verificarEmail(formControl.value)
       .pipe(map(emailExiste => emailExiste ? { emailInvalido : true} : null))
-  }
-
-  aplicaCssErro(campo: string) {
-    return {'is-invalid': this.invalidTouchedField(campo)}
   }
   
 }
