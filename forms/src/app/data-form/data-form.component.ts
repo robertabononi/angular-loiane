@@ -6,6 +6,7 @@ import { EMPTY, Observable } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br';
+import { Cidade } from '../shared/models/cidade';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { Cargo } from '../shared/models/cargo';
 import { Tecnologia } from '../shared/models/tecnologia';
@@ -21,7 +22,8 @@ import { BaseFormComponent } from '../shared/base-form/base-form.component';
 export class DataFormComponent extends BaseFormComponent implements OnInit {
 
   //formulario!: FormGroup;
-  estados!: Observable<EstadoBr[]>;
+  estados!: EstadoBr[];
+  cidades!: Cidade[];
   cargos!: Cargo[];
   tecnologias!: Tecnologia[];
   newsletters!: any[];
@@ -41,11 +43,13 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
 
     //this.verificaEmailService.verificarEmail('email@email.com').subscribe();
 
-    this.estados = this.dropdownService.getEstadosBr();
+    //this.estados = this.dropdownService.getEstadosBr();
+    this.dropdownService.getEstadosBr()
+      .subscribe(dados => this.estados = dados);
 
     this.cargos = this.dropdownService.getCargos();
     this.tecnologias = this.dropdownService.getTecnologias();
-    this.newsletters = this.dropdownService.getNewsletter()
+    this.newsletters = this.dropdownService.getNewsletter();
 
     /* this.dropdownService.getEstadosBr()
       .subscribe(dados => {
@@ -66,6 +70,7 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
     }) */
 
     //criando formulário com sintaxe simplificada utilizando FormBuilder
+
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
       email: [null, [Validators.required, Validators.email], this.validarEmail.bind(this)],
@@ -97,7 +102,22 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
           : EMPTY
         )
       )
-      .subscribe(dados => dados ? this.populaDadosForm(dados) : {} );
+      .subscribe(dados => dados ? this.populaDadosForm(dados) : {})
+    ;
+
+    this.formulario.get('endereco.estado')?.valueChanges
+      .pipe(
+        tap(estado => console.log('Novo estado: ', estado)),
+        map(estado => this.estados.filter(e => e.sigla === estado)),
+        tap(console.log),
+        map((estados: any) => estados && estados.length > 0 ? estados[0].id : EMPTY),
+        tap(console.log),
+        switchMap((estadoId: number) => this.dropdownService.getCidades(estadoId)),
+        tap(console.log)
+      )
+      .subscribe(cidades => this.cidades = cidades)
+    ;
+    //this.dropdownService.getCidades(8).subscribe(console.log);
   }
 
   consultaCEP() {
@@ -160,7 +180,7 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
     })
 
     console.log(valueSubmit)
-    
+
     this.http.post('https://httpbin.org/post',
       JSON.stringify(valueSubmit))
       .subscribe(dados => {
@@ -187,5 +207,5 @@ export class DataFormComponent extends BaseFormComponent implements OnInit {
     return this.verificaEmailService.verificarEmail(formControl.value)
       .pipe(map(emailExiste => emailExiste ? { emailInvalido : true} : null))
   }
-  
+
 }

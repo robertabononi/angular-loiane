@@ -42,7 +42,6 @@
       <input type="text" class="form-control" [ngClass]="aplicaCssErro('endereco.cep')" formControlName="cep" id="cep" placeholder="CEP" (blur)="consultaCEP()">
 
       <app-error-msg [control]="formulario.get('endereco.cep')" label="CEP"></app-error-msg>
-      
     </div>
 
     <div class="col-md-3">
@@ -76,7 +75,12 @@
 
     <div class="col-md-4">
       <label for="cidade" class="form-label">Cidade</label>
-      <input type="text" class="form-control" [ngClass]="aplicaCssErro('endereco.cidade')" formControlName="cidade" id="cidade" placeholder="Cidade">
+      <select class="form-select" [ngClass]="aplicaCssErro('endereco.cidade')" formControlName="cidade" id="cidade">
+        <option value=null selected>Cidade</option>
+        <option *ngFor="let cidade of cidades" [value]="cidade.nome">
+          {{ cidade.nome }}
+        </option>
+      </select>
 
       <app-error-msg [control]="formulario.get('endereco.cidade')" label="Cidade"></app-error-msg>
 
@@ -86,7 +90,7 @@
       <label for="estado" class="form-label">Estado</label>
       <select class="form-select" [ngClass]="aplicaCssErro('endereco.estado')" formControlName="estado" id="estado">
         <option value=null selected>Estado</option>
-        <option *ngFor="let estado of estados | async" [value]="estado.sigla">
+        <option *ngFor="let estado of estados" [value]="estado.sigla">
           {{ estado.nome }}
         </option>
       </select>
@@ -159,7 +163,7 @@
       <input class="form-check-input" type="checkbox" [ngClass]="aplicaCssErro('aceitarTermos')" formControlName="aceitarTermos" id="aceitarTermos" >
       <label class="form-check-label">Aceito os termos de uso.</label>
     </div>
-    
+
     <div *ngIf="invalidTouchedField('aceitarTermos')" class="alert alert-danger" role="alert">
       Por favor, aceite os termos de uso para continuar.
     </div>
