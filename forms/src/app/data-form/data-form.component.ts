@@ -220,4 +220,8 @@ export class DataFormComponent implements OnInit {
       .pipe(map(emailExiste => emailExiste ? { emailInvalido : true} : null))
   }
 
+  aplicaCssErro(campo: string) {
+    return {'is-invalid': this.invalidTouchedField(campo)}
+  }
+  
 }
