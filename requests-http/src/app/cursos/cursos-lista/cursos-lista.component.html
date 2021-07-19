@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="card-body">
-    <table class="table">
+    <table class="table" *ngIf="cursos$ | async as cursos; else loading">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -37,5 +37,12 @@
         </tr>
       </tbody>
     </table>
+    <ng-template #loading>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
