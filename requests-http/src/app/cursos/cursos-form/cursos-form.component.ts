@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertModalService } from 'src/app/shared/alert-modal.service';
+import { CursosService } from '../cursos.service';
 
 @Component({
   selector: 'app-cursos-form',
@@ -11,8 +14,12 @@ export class CursosFormComponent implements OnInit {
   form!: FormGroup;
   submitted: boolean = false;
 
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private cursosService: CursosService,
+    private alertModalService: AlertModalService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
 
@@ -27,11 +34,19 @@ export class CursosFormComponent implements OnInit {
   }
 
   onSubmit() {
-    //console.log(this.form.value)
+    console.log(this.form.value)
     this.submitted = true;
 
     if (this.form.valid) {
       console.log('onSubmit')
+      this.cursosService.create(this.form.value).subscribe(
+        success => {
+          this.alertModalService.showAlertSuccess('Curso criado com sucesso.');
+          this.location.back();
+        },
+        error => this.alertModalService.showAlertDanger('Erro ao criar curso. Tente novamente.'),
+        () => console.log('Request completo')
+      );
     }
   }
 
