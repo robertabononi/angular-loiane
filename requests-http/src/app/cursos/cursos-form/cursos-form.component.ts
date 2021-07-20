@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './cursos-form.component.html',
   styleUrls: ['./cursos-form.component.css']
 })
-export abstract class CursosFormComponent implements OnInit {
+export class CursosFormComponent implements OnInit {
 
   form!: FormGroup;
   submitted: boolean = false;
@@ -22,8 +22,6 @@ export abstract class CursosFormComponent implements OnInit {
 
   }
 
-  abstract submit(): any;
-
   hasError(field: string) {
     return this.form.get(field)?.errors;
   }
@@ -34,7 +32,6 @@ export abstract class CursosFormComponent implements OnInit {
 
     if (this.form.valid) {
       console.log('onSubmit')
-      this.submit();
     }
   }
 
