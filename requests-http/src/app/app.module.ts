@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { UnsubscribeRxjsModule } from './unsubscribe-rxjs/unsubscribe-rxjs.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     BrowserModule,
     TooltipModule.forRoot(),
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UnsubscribeRxjsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
