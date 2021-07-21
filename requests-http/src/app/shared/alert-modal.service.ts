@@ -16,7 +16,7 @@ export class AlertModalService {
     private modalService: BsModalService
   ) { }
 
-  private showAlert(message: string, type: AlertTypes, dismissTimeout?: number) {
+  private showAlert(message: string, type: AlertTypes, _dismissTimeout?: number) {
     const bsModalRef: BsModalRef = this.modalService.show(AlertModalComponent);
     bsModalRef.content.type = type;
     bsModalRef.content.message = message

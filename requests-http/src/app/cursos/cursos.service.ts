@@ -39,6 +39,10 @@ export class CursosService {
     return this.http.put(`${this.API}/${curso.id}`, curso).pipe(take(1));
   }
 
+  remove(id: number) {
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+  }
+
   save(curso: Curso) {
     if (curso.id) {
       return this.update(curso);
