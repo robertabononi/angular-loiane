@@ -15,6 +15,10 @@
     {
       "nome": "API Rest",
       "id": 5
+    },
+    {
+      "id": 6,
+      "nome": "Lógica de Programação com C"
     }
   ]
 }

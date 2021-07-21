@@ -1,16 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { delay, take, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class CrudService<T> {
 
-  private readonly API_URL = `${environment.API}records`;
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private API_URL: string
+  ) { }
 
   list() {
     return this.http.get<T[]>(this.API_URL)
