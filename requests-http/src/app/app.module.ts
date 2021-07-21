@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { UnsubscribeRxjsModule } from './unsubscribe-rxjs/unsubscribe-rxjs.module';
 import { SharedModule } from './shared/shared.module';
+import { UploadFileModule } from './upload-file/upload-file.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     AppRoutingModule,
     UnsubscribeRxjsModule,
-    SharedModule
+    SharedModule,
+    UploadFileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
