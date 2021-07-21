@@ -21,8 +21,16 @@
       "id": 5
     },
     {
-      "nome": "Http",
-      "id": 6
+      "id": 6,
+      "nome": "HTTP"
+    },
+    {
+      "id": 7,
+      "nome": "AWS"
+    },
+    {
+      "id": 8,
+      "nome": "HTML 5"
     }
   ]
 }
