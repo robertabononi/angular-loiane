@@ -6,7 +6,7 @@
       </div>
       <div class="col-auto">
         <button type="button" class="btn btn-secondary me-1" (click)="onRefresh()">
-          Atualizar
+          Recarregar
         </button>
         <button type="button" class="btn btn-primary" [routerLink]="['novo']">
           Novo curso
@@ -29,7 +29,7 @@
           <td>{{ curso.nome }}</td>
           <td>
             <div class="d-flex justify-content-end">
-              <button type="button" class="btn btn-outline-warning me-2">
+              <button type="button" class="btn btn-outline-warning me-2" (click)="onEdit(curso.id)">
                 Atualizar
               </button>
               <button type="button" class="btn btn-outline-danger">
