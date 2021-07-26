@@ -7,11 +7,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const corsOptions = {
+/* const corsOptions = {
   origin: '*',
   optionSuccessStatus: 200
 }
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); */
 
 const multipartMiddleware = multipart({ uploadDir: './uploads' });
 app.post('/upload', multipartMiddleware, (req, res) => {
