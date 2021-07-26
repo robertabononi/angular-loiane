@@ -1,3 +1,4 @@
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,6 +13,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
 
   files!: Set<File>;
   sub!: Subscription;
+  progress = 0;
 
   constructor(private service: UploadFileService) { }
 
@@ -36,12 +38,26 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     if (output) {
       output.innerHTML = fileNames.join(', ');
     }
+
+    this.progress = 0;
   }
 
   onUpload() {
     if(this.files && this.files.size > 0) {
       this.sub = this.service.upload(this.files, `${environment.BASE_URL}/upload`)
-        .subscribe(response => console.log('Upload concluído'));
+        .subscribe((event: HttpEvent<Object>) => {
+          //HttpEventType
+          console.log(event);
+
+          if (event.type == HttpEventType.Response) {
+            console.log('Upload concluído');
+          } else if (event.type == HttpEventType.UploadProgress) {
+            const percentDone = Math.round((event.loaded * 100) / event.total!);
+            console.log('Progresso: ', percentDone);
+            this.progress = percentDone;
+          }
+        })
+      ;
     }
   }
 
