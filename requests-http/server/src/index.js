@@ -2,6 +2,7 @@ const express = require('express');
 //import cors from 'cors';
 //import bodyParser from 'body-parser';
 const multipart = require('connect-multiparty');
+const { get } = require('http');
 
 const app = express();
 app.use(express.json());
@@ -20,6 +21,13 @@ app.post('/upload', multipartMiddleware, (req, res) => {
   res.json({ message: files });
 })
 
+app.get('/downloadExcel', (req, res) => {
+  res.download('./uploads/fileExcel.xlsx');
+})
+
+app.get('/downloadPdf', (req, res) => {
+  res.download('./uploads/filePdf.pdf')
+})
 app.use((err, req, res, next) => res.json({error: err.message}));
 
 app.listen(8000, () => {
