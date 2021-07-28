@@ -12,20 +12,20 @@
 
   <div class="card-body p-0">
     <div class="card bg-light rounded-0 border-0">
-      <h5 class="card-title p-3 fs-3">303 Records Found</h5>
+      <h5 class="card-title p-3 fs-3">{{ total }} registros encontrados</h5>
     </div>
     <div class="card-text">
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Versão</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>HTML</td>
-            <td>Web Development</td>
+          <tr *ngFor="let result of results$ | async">
+            <td>{{ result.name }}</td>
+            <td>{{ result.version }}</td>
           </tr>
         </tbody>
       </table>
