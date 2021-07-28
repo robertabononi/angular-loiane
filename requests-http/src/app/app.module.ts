@@ -9,6 +9,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { UnsubscribeRxjsModule } from './unsubscribe-rxjs/unsubscribe-rxjs.module';
 import { SharedModule } from './shared/shared.module';
 import { UploadFileModule } from './upload-file/upload-file.module';
+import { ReactiveSearchModule } from './reactive-search/reactive-search.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UploadFileModule } from './upload-file/upload-file.module';
     AppRoutingModule,
     UnsubscribeRxjsModule,
     SharedModule,
-    UploadFileModule
+    UploadFileModule,
+    ReactiveSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
