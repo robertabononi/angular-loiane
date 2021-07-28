@@ -22,13 +22,16 @@ export class ReactiveSearchComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.queryField.value)
+    let value = this.queryField.value;
+    if (value && (value = value.trim()) !== '') {
 
-    this.results$ = this.http.get(`${this.SEARCH_URL}?fields=name,description,version,homepage&search=angular`)
-      .pipe(
-        tap((res: any) => this.total = res.total),
-        map((res: any) => res.results)
-      )
+
+      this.results$ = this.http.get(`${this.SEARCH_URL}?fields=name,description,version,homepage&search=${value}`)
+        .pipe(
+          tap((res: any) => this.total = res.total),
+          map((res: any) => res.results)
+        )
+      ;
+    }
   }
-
 }
