@@ -73,39 +73,15 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   onDownloadExcel() {
     this.service.download(`${environment.BASE_URL}/downloadExcel`)
     .subscribe((res:any) => {
-      const file = new Blob([res], {
-        type: res.type
-      });
-      const blob = window.URL.createObjectURL(file);
-      const link = document.createElement('a');
-
-      link.href = blob;
-      link.download = 'fileExcel.xlsx';
-
-      link.click();
-
-      window.URL.revokeObjectURL(blob);
-      link.remove;
+      this.service.handleFile(res, 'fileExcel.xlsx')
     });
   }
 
   onDownloadPdf() {
     this.service.download(`${environment.BASE_URL}/downloadPdf`)
     .subscribe((res:any) => {
-      const file = new Blob([res], {
-        type: res.type
-      });
-      const blob = window.URL.createObjectURL(file);
-      const link = document.createElement('a');
-
-      link.href = blob;
-      link.download = 'filePdf.pdf';
-
-      link.click();
-
-      window.URL.revokeObjectURL(blob);
-      link.remove;
-    });
+      this.service.handleFile(res, 'filePdf.pdf')
+    })
   }
 
   ngOnDestroy() {
