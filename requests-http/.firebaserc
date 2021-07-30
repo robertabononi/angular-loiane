@@ -1,5 +1,11 @@
 {
-  "projects": {
-    "default": "curso-angular-roberta"
+  "targets": {
+    "curso-angular-roberta": {
+      "hosting": {
+        "requests-http": [
+          "curso-angular-roberta"
+        ]
+      }
+    }
   }
 }
