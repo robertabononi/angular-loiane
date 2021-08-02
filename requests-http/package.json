@@ -26,10 +26,7 @@
     "tslib": "^2.2.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4",
-    "firebase": "^7.0 || ^8.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~12.1.2",
+    "firebase": "^7.0 || ^8.0",
     "@angular/cli": "~12.1.2",
     "@angular/compiler-cli": "~12.1.2",
     "@types/jasmine": "~3.8.0",
@@ -48,5 +45,8 @@
     "inquirer-autocomplete-prompt": "^1.0.1",
     "open": "^7.0.3",
     "jsonc-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^12.1.4"
   }
 }
